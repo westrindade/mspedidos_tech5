@@ -28,10 +28,19 @@ public class PedidoController {
         );
     }
 
+    @GetMapping
+    @Operation(summary = "Listar todos os pedidos")
+    @ApiResponseSwaggerOk
+    public ResponseEntity<?> listarTodos() {
+        return SpringControllerUtils.response(HttpStatus.OK,
+                () -> pedidoService.listarTodos()
+        );
+    }
+
     @GetMapping("/usuario/{id}")
     @Operation(summary = "Buscar pedido por ID de usuario")
     @ApiResponseSwaggerOk
-    public ResponseEntity<?> listarPedidosPorCliente(@PathVariable Long id) {
+    public ResponseEntity<?> listarPedidosPorUsuario(@PathVariable Long id) {
         return SpringControllerUtils.response(HttpStatus.OK,
                 () -> pedidoService.listarPedidosPorUsuario(id)
         );

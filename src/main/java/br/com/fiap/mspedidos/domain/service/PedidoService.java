@@ -30,6 +30,11 @@ public class PedidoService {
         }
         return pedido;
     }
+
+    public List<PedidoDtoResponse> listarTodos() throws BusinessException {
+        return pedidoRepository.findAll().stream().map(PedidoEntity::toDto).toList();
+    }
+
     public List<PedidoDtoResponse> listarPedidosPorUsuario(Long id) throws BusinessException {
         return pedidoRepository.findByIdUsuario(id).stream().map(PedidoEntity::toDto).toList();
     }
@@ -49,6 +54,7 @@ public class PedidoService {
             PedidoEntity pedidoRetorno = pedidoRepository.save(pedido);
             return pedidoRetorno.toDto();
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             this.devolverAoEstoqueProduto(pedido);
             throw new BusinessException(ex.getMessage());
         }

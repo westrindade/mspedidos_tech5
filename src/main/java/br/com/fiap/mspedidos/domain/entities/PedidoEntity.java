@@ -69,7 +69,10 @@ public class PedidoEntity {
                 this.id,
                 this.idUsuario,
                 this.dataCriacao,
-                this.toListDto()
+                this.toListDto(),
+                this.valorTotal,
+                this.formaPagamento,
+                this.statusPedido
         );
     }
 

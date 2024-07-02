@@ -3,6 +3,7 @@ package br.com.fiap.mspedidos.domain.dto;
 import br.com.fiap.estrutura.exception.BusinessException;
 import br.com.fiap.mspedidos.domain.entities.ItemEntity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public record CarrinhoDtoRequest(
         List<ItemCarrinhoDtoRequest> itens,
         String formaPagamento,
         int quantidadeItens,
-        double valorTotal
+        BigDecimal valorTotal
 ) {
     public List<ItemEntity> ToEntityListItem() throws BusinessException {
         List<ItemEntity> itemEntityList = new ArrayList<>();

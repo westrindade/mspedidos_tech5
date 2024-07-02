@@ -4,7 +4,6 @@ import br.com.fiap.estrutura.exception.BusinessException;
 import br.com.fiap.mspedidos.domain.dto.ItemPedidoDtoResponse;
 import br.com.fiap.mspedidos.domain.dto.PedidoDtoResponse;
 import jakarta.persistence.*;
-import lombok.Builder;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -35,7 +34,7 @@ public class PedidoEntity {
 
     public PedidoEntity() { }
 
-    public PedidoEntity(Long idUsuario, String formaPagamento, List<ItemEntity> itens)
+    public PedidoEntity(Long idUsuario, String formaPagamento, List<ItemEntity> itens, BigDecimal valorTotal)
             throws BusinessException {
 
         if (idUsuario == 0){
@@ -53,7 +52,7 @@ public class PedidoEntity {
         this.dataCriacao = LocalDateTime.now();
         this.dataPagamento = LocalDateTime.now();
         this.statusPedido = "PAGO";
-        this.valorTotal = BigDecimal.ZERO;
+        this.valorTotal = valorTotal;
     }
 
     public Long getId() {

@@ -47,7 +47,8 @@ public class PedidoService {
         final PedidoEntity pedido = new PedidoEntity(
                 carrinho.idUsuario(),
                 carrinho.formaPagamento(),
-                carrinho.ToEntityListItem()
+                carrinho.ToEntityListItem(),
+                carrinho.valorTotal()
         );
         this.removerEstoqueProduto(pedido);
         try {

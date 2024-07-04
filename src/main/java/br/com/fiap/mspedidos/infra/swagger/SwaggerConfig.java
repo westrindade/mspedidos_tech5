@@ -21,7 +21,7 @@ public class SwaggerConfig {
     @Value("${server.port:Unknown}")
     String serverPort;
     @Bean
-    public OpenAPI openAPI() {
+    OpenAPI openAPI() {
         OpenAPI info = new OpenAPI()
                 .info(new Info()
                         .title("APIs do Microserviço de Pedidos")
@@ -29,7 +29,7 @@ public class SwaggerConfig {
                         .description("APIs do Microserviço de Pedidos criada exclusivamente para o TechChallenge 4 da FIAP.")
                 );
 
-        if("docker".equals(activeProfile)){
+        if(activeProfile.contains("docker")){
             info.servers(Arrays.asList(getServer()));
         }
         return info;
